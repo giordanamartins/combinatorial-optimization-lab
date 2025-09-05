@@ -17,12 +17,12 @@ Compreender os conceitos básicos de **Otimização Combinatória** e **Programa
 - Algoritmos de Aproximação  
 
 ## 📂 Estrutura do Repositório
-- `exercicios/` → resoluções dos exercícios da disciplina  
-- `projetos/` → trabalhos maiores ou implementações de algoritmos  
-- `docs/` → materiais de apoio, artigos e referências  
+- `exercicios/` → resoluções dos exercícios e implementações da disciplina  
+- `projetos/` → trabalhos mais complexos
+- `docs/` → materiais de apoio e referências  
 
 ## ⚙️ Tecnologias Utilizadas
-- Python (com bibliotecas como `numpy`, `scipy`, `pulp`, `ortools`)  
+- Python (com bibliotecas como `PySCIPOpt`)  
 - C++ (para algoritmos de maior desempenho)  
 
 ## ✨ Objetivo Pessoal
