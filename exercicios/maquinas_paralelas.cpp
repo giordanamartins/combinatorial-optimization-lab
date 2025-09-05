@@ -37,7 +37,26 @@ int main(){
     }
     cout << m << "\n";
     // ---------------------------------------------------------------------------------
+    // heuristíca 3 - heuristíca 2 + ordenação do vetor, para inserir as tarefas de maoir tempo primeiramente
+    ll menorMaquina;
+    for (int i = 0; i < tt; i++){
+        cin >> v[i]; // vetor armazena o tempo de cada tarefa
+        sort(v.begin(), v.end(), std::greater<int>()); //ordena o vetor
+        }
+
+    for (int i = 0; i < tt; i++){
+        for (int j = 0; j < tt; j++){
+            ll menorTempo = 111111111111111;
+                if (vmaq[j] < menorTempo){
+                    menorTempo = vmaq[j];
+                    menorMaquina = j;
+                }
+            vmaq[menorMaquina] += v[i]; // aloca as tarefas nas máquinas disponíveis
+            m = max(m, vmaq[menorMaquina]); // verifica o tempo máximo que uma máquina leva (solução)
+        }
+    }
+    
+    cout << m << "\n";
 
     return 0;
 }
-
