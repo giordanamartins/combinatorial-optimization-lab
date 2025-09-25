@@ -9,7 +9,6 @@ int main(){
     vector<ll> x;
     vector<ll> y;
     ll id;
-    ll menorDistancia = 3333333333333;
 
     while (cin >> id){
         ll x1, y1;
@@ -22,35 +21,39 @@ int main(){
 
     ll n = x.size();
 
-    vector<ll> x_percorridos;
-    vector<ll> y_percorridos;
+    vector<bool> marcado(n, false);
 
-    x_percorridos.push_back(x[0]);
-    y_percorridos.push_back(y[0]);
+    ll atual = 0;
+    marcado[atual] = true;
+    ll soma = 0;
 
-    for (ll i = 0; i < n-1; i++){
-        ll soma = 0;
-        ll indice;
-        for (ll j = 0; j < n; j++){
-            if (i != j){
-                ll dist_x = x_percorridos[i] - x[j];
-                ll dist_y = y_percorridos[i] - y[j];
+    for (ll step = 1; step < n; ++step) {
+        ll menorDistancia = 333333333333333333333;
+        ll proximo = -1;
+
+        for (ll j = 0; j < n; ++j) {
+            if (!marcado[j]) {
+                ll dist_x = x[atual] - x[j];
+                ll dist_y = y[atual] - y[j];
                 ll dist = (sqrt(dist_x * dist_x + dist_y * dist_y) + 0.5);
 
-                if(dist < menorDistancia){
+                if (dist < menorDistancia) {
                     menorDistancia = dist;
-                    indice = j;
+                    proximo = j;
                 }
             }
         }
 
-        x_percorridos.push_back(x[indice]);
-        y_percorridos.push_back(y[indice]);
-
         soma += menorDistancia;
+        atual = proximo;
+        marcado[atual] = true;
     }
 
-    cout << menorDistancia << endl;
+    ll dist_x = x[atual] - x[0];
+    ll dist_y = y[atual] - y[0];
+    soma += (sqrt(dist_x * dist_x + dist_y * dist_y) + 0.5);
+
+    cout << soma << '\n';
 
     return 0;
 }
